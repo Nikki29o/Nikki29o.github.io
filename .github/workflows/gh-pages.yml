@@ -27,5 +27,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}  # 使用个人访问令牌
+          external_repository: Nikki29o/Nikki29o.github.io
           publish_dir: ./public
           publish_branch: gh-pages
