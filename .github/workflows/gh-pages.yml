@@ -1,31 +1,30 @@
-name: GitHub Pages Deployment
+name: github pages
 
 on:
   push:
     branches:
-      - main  # 触发工作流的分支是 main，而不是 gh-pages
+      - main  # Set a branch to deploy
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04  # 选择 Ubuntu 20.04 作为运行环境
-
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2  # 检出代码库
+      - uses: actions/checkout@v2
         with:
-          submodules: true
-          fetch-depth: 0
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.82.0'
+          # extended: true
 
       - name: Build
-        run: hugo --minify  # 使用 Hugo 构建站点
+        run: hugo --minify
 
-      - name: Deploy to gh-pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # 构建的静态文件目录
-          target_branch: gh-pages  # 将构建结果推送到 gh-pages 分支
+          publish_dir: ./public
