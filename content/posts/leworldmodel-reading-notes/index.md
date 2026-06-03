@@ -1,6 +1,6 @@
-﻿---
+---
 title: "LeWorldModel 阅读笔记：让 latent space 更适合规划"
-date: 2026-06-03T20:00:00+08:00
+date: 2026-06-03T18:30:00+08:00
 draft: false
 description: "一篇关于 LeWorldModel 的阅读笔记：从 JEPA、SIGReg 到 latent planning，梳理它如何用结构化的隐空间服务世界模型规划。"
 tags: ["world model", "JEPA", "representation learning", "planning"]
