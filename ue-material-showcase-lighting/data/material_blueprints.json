@@ -1,0 +1,4219 @@
+{
+  "schema": "ue-material-blueprint-export/v1",
+  "engine_version": "5.7.3",
+  "exported_from": "live UE assets under /Game/Eval (nodes/params/textures/overrides read from assets; node graph = authoritative design spec matching the build script)",
+  "masters": [
+    {
+      "material_id": "M_PBR_Base_Master",
+      "asset_path": "/Game/Eval/Masters/M_PBR_Base_Master",
+      "shading_model": "MSM_DEFAULT_LIT",
+      "blend_mode": "BLEND_OPAQUE",
+      "two_sided": false,
+      "num_expressions": 15,
+      "connections_source": "design_spec (matches built asset)",
+      "nodes": [
+        {
+          "node_id": "n_uv",
+          "type": "TexCoord",
+          "label": "UV0",
+          "depth": 8,
+          "properties": {
+            "coordinate_index": 0
+          }
+        },
+        {
+          "node_id": "n_tiling",
+          "type": "ScalarParameter",
+          "label": "UV Tiling",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_uv_mul",
+          "type": "Multiply",
+          "label": "UV * Tiling",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_basecolor_tex",
+          "type": "TextureSample",
+          "label": "BaseColor Tex",
+          "depth": 6,
+          "properties": {
+            "sampler_type": "Color",
+            "srgb": true
+          },
+          "comment_group": "BaseColor Pipeline"
+        },
+        {
+          "node_id": "n_tint",
+          "type": "VectorParameter",
+          "label": "Color Tint",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "BaseColor Pipeline"
+        },
+        {
+          "node_id": "n_basecolor_mul",
+          "type": "Multiply",
+          "label": "Tex * Tint",
+          "depth": 5,
+          "properties": {},
+          "comment_group": "BaseColor Pipeline"
+        },
+        {
+          "node_id": "n_desat",
+          "type": "ScalarParameter",
+          "label": "Desaturation",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "BaseColor Pipeline"
+        },
+        {
+          "node_id": "n_desat_node",
+          "type": "Desaturation",
+          "label": "Desaturate",
+          "depth": 4,
+          "properties": {},
+          "comment_group": "BaseColor Pipeline"
+        },
+        {
+          "node_id": "n_normal_tex",
+          "type": "TextureSample",
+          "label": "Normal Tex",
+          "depth": 6,
+          "properties": {
+            "sampler_type": "Normal",
+            "srgb": false
+          },
+          "comment_group": "Normal Pipeline"
+        },
+        {
+          "node_id": "n_normal_strength",
+          "type": "ScalarParameter",
+          "label": "Normal Strength",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "Normal Pipeline"
+        },
+        {
+          "node_id": "n_flatten",
+          "type": "FlattenNormal",
+          "label": "Flatten Normal",
+          "depth": 5,
+          "properties": {},
+          "comment_group": "Normal Pipeline"
+        },
+        {
+          "node_id": "n_detail_normal_tex",
+          "type": "TextureSample",
+          "label": "Detail Normal",
+          "depth": 6,
+          "properties": {
+            "sampler_type": "Normal",
+            "srgb": false
+          },
+          "comment_group": "Normal Pipeline"
+        },
+        {
+          "node_id": "n_blend_normal",
+          "type": "BlendAngleCorrectedNormals",
+          "label": "Blend Normals",
+          "depth": 4,
+          "properties": {},
+          "comment_group": "Normal Pipeline"
+        },
+        {
+          "node_id": "n_mra_tex",
+          "type": "TextureSample",
+          "label": "MRA Packed (R=Metal,G=Rough,B=AO)",
+          "depth": 6,
+          "properties": {
+            "sampler_type": "Masks",
+            "srgb": false
+          },
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_metal_scale",
+          "type": "ScalarParameter",
+          "label": "Metallic",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_metal_mul",
+          "type": "Multiply",
+          "label": "Metal * Scale",
+          "depth": 4,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_rough_min",
+          "type": "ScalarParameter",
+          "label": "Roughness Min",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_rough_max",
+          "type": "ScalarParameter",
+          "label": "Roughness Max",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_rough_remap",
+          "type": "Lerp",
+          "label": "Roughness Remap",
+          "depth": 4,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_ao_strength",
+          "type": "ScalarParameter",
+          "label": "AO Strength",
+          "depth": 6,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_ao_lerp",
+          "type": "Lerp",
+          "label": "AO Strength Lerp",
+          "depth": 4,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_const_one",
+          "type": "Constant",
+          "label": "1.0",
+          "depth": 5,
+          "properties": {
+            "value": 1.0
+          },
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_specular",
+          "type": "ScalarParameter",
+          "label": "Specular",
+          "depth": 1,
+          "properties": {},
+          "comment_group": "Surface Pipeline"
+        },
+        {
+          "node_id": "n_emissive_color",
+          "type": "VectorParameter",
+          "label": "Emissive Color",
+          "depth": 3,
+          "properties": {},
+          "comment_group": "Emissive Pipeline"
+        },
+        {
+          "node_id": "n_emissive_int",
+          "type": "ScalarParameter",
+          "label": "Emissive Intensity",
+          "depth": 3,
+          "properties": {},
+          "comment_group": "Emissive Pipeline"
+        },
+        {
+          "node_id": "n_emissive_mul",
+          "type": "Multiply",
+          "label": "Emissive * Intensity",
+          "depth": 1,
+          "properties": {},
+          "comment_group": "Emissive Pipeline"
+        }
+      ],
+      "connections": [
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_uv_mul",
+          "to_pin": "A",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_tiling",
+          "from_pin": "out",
+          "to_node": "n_uv_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uv_mul",
+          "from_pin": "out",
+          "to_node": "n_basecolor_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv_mul",
+          "from_pin": "out",
+          "to_node": "n_normal_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv_mul",
+          "from_pin": "out",
+          "to_node": "n_mra_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_basecolor_tex",
+          "from_pin": "RGB",
+          "to_node": "n_basecolor_mul",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_tint",
+          "from_pin": "RGB",
+          "to_node": "n_basecolor_mul",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_basecolor_mul",
+          "from_pin": "out",
+          "to_node": "n_desat_node",
+          "to_pin": "Input",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_desat",
+          "from_pin": "out",
+          "to_node": "n_desat_node",
+          "to_pin": "Fraction",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_normal_tex",
+          "from_pin": "RGB",
+          "to_node": "n_flatten",
+          "to_pin": "Normal",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_normal_strength",
+          "from_pin": "out",
+          "to_node": "n_flatten",
+          "to_pin": "Flatness",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_flatten",
+          "from_pin": "out",
+          "to_node": "n_blend_normal",
+          "to_pin": "BaseNormal",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_detail_normal_tex",
+          "from_pin": "RGB",
+          "to_node": "n_blend_normal",
+          "to_pin": "AdditionalNormal",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_mra_tex",
+          "from_pin": "R",
+          "to_node": "n_metal_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_metal_scale",
+          "from_pin": "out",
+          "to_node": "n_metal_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_mra_tex",
+          "from_pin": "G",
+          "to_node": "n_rough_remap",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rough_min",
+          "from_pin": "out",
+          "to_node": "n_rough_remap",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rough_max",
+          "from_pin": "out",
+          "to_node": "n_rough_remap",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_const_one",
+          "from_pin": "out",
+          "to_node": "n_ao_lerp",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_mra_tex",
+          "from_pin": "B",
+          "to_node": "n_ao_lerp",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_ao_strength",
+          "from_pin": "out",
+          "to_node": "n_ao_lerp",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_emissive_color",
+          "from_pin": "RGB",
+          "to_node": "n_emissive_mul",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_emissive_int",
+          "from_pin": "out",
+          "to_node": "n_emissive_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        }
+      ],
+      "output_connections_runtime": {
+        "BaseColor": {
+          "from_node_type": "Desaturation",
+          "from_node": "MaterialExpressionDesaturation_0",
+          "from_pin": ""
+        },
+        "Metallic": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_1",
+          "from_pin": ""
+        },
+        "Specular": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_4",
+          "from_pin": ""
+        },
+        "Roughness": {
+          "from_node_type": "LinearInterpolate",
+          "from_node": "MaterialExpressionLinearInterpolate_0",
+          "from_pin": ""
+        },
+        "EmissiveColor": {
+          "from_node_type": "Multiply",
+          "from_node": "MaterialExpressionMultiply_0",
+          "from_pin": ""
+        },
+        "AmbientOcclusion": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_5",
+          "from_pin": ""
+        }
+      },
+      "exposed_parameters": [
+        {
+          "param_name": "Desaturation",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "02 - BaseColor",
+          "semantic": "去饱和度，0=原色 1=灰度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Metallic",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "04 - Surface",
+          "semantic": "金属度总控乘子",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Roughness Min",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "04 - Surface",
+          "semantic": "粗糙度重映射下限（贴图黑值映射到此）",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Roughness Max",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "04 - Surface",
+          "semantic": "粗糙度重映射上限（贴图白值映射到此）",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Specular",
+          "param_type": "Scalar",
+          "default": 0.5,
+          "group": "04 - Surface",
+          "semantic": "非金属高光强度，默认 0.5 (4% F0)",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "AO Strength",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "04 - Surface",
+          "semantic": "环境光遮蔽强度，0=无AO 1=全AO",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Emissive Intensity",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "05 - Emissive",
+          "semantic": "自发光强度（nits 量级倍率）",
+          "range": {
+            "min": 0.0,
+            "max": 100.0,
+            "ui_min": 0.0,
+            "ui_max": 20.0
+          }
+        },
+        {
+          "param_name": "UV Tiling",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "01 - UV",
+          "semantic": "纹理平铺次数",
+          "range": {
+            "min": 0.1,
+            "max": 64.0,
+            "ui_min": 0.1,
+            "ui_max": 16.0
+          }
+        },
+        {
+          "param_name": "Normal Strength",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "03 - Normal",
+          "semantic": "法线强度，0=压平 1=原强度，>1 增强",
+          "range": {
+            "min": 0.0,
+            "max": 4.0,
+            "ui_min": 0.0,
+            "ui_max": 2.0
+          }
+        },
+        {
+          "param_name": "Color Tint",
+          "param_type": "Vector",
+          "default": [
+            0.6,
+            0.6,
+            0.62,
+            1.0
+          ],
+          "group": "02 - BaseColor",
+          "semantic": "基础色染色乘子，(1,1,1,1) 为原色"
+        },
+        {
+          "param_name": "Emissive Color",
+          "param_type": "Vector",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "group": "05 - Emissive",
+          "semantic": "自发光颜色"
+        }
+      ],
+      "static_switch_param_names": [],
+      "referenced_textures": []
+    },
+    {
+      "material_id": "M_Procedural_Master",
+      "asset_path": "/Game/Eval/Masters/M_Procedural_Master",
+      "shading_model": "MSM_DEFAULT_LIT",
+      "blend_mode": "BLEND_OPAQUE",
+      "two_sided": false,
+      "num_expressions": 25,
+      "connections_source": "design_spec (matches built asset)",
+      "nodes": [
+        {
+          "node_id": "n_uv",
+          "type": "TexCoord",
+          "label": "UV0",
+          "depth": 11,
+          "properties": {
+            "coordinate_index": 0
+          }
+        },
+        {
+          "node_id": "n_worldpos",
+          "type": "WorldPosition",
+          "label": "Absolute World Pos",
+          "depth": 11,
+          "properties": {}
+        },
+        {
+          "node_id": "n_proj_scale",
+          "type": "ScalarParameter",
+          "label": "World Proj Scale",
+          "depth": 11,
+          "properties": {}
+        },
+        {
+          "node_id": "n_worlduv",
+          "type": "Multiply",
+          "label": "WorldPos * Scale",
+          "depth": 10,
+          "properties": {}
+        },
+        {
+          "node_id": "n_worlduv_mask",
+          "type": "ComponentMask",
+          "label": "Mask XY",
+          "depth": 9,
+          "properties": {
+            "r": true,
+            "g": true,
+            "b": false,
+            "a": false
+          }
+        },
+        {
+          "node_id": "n_use_world",
+          "type": "StaticSwitchParameter",
+          "label": "Use Triplanar/World UV",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_uvselect",
+          "type": "If",
+          "label": "UV Select",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_noise_scale",
+          "type": "ScalarParameter",
+          "label": "Noise Scale",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_noise_uv_mul",
+          "type": "Multiply",
+          "label": "UV * NoiseScale",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_fbm",
+          "type": "Noise",
+          "label": "FBM Noise",
+          "depth": 6,
+          "properties": {
+            "function": "Gradient",
+            "quality": 3,
+            "levels": 4,
+            "turbulence": true
+          }
+        },
+        {
+          "node_id": "n_cell",
+          "type": "Noise",
+          "label": "Voronoi Cell",
+          "depth": 6,
+          "properties": {
+            "function": "Voronoi",
+            "quality": 2,
+            "levels": 2
+          }
+        },
+        {
+          "node_id": "n_cell_weight",
+          "type": "ScalarParameter",
+          "label": "Cell Blend",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_noise_mix",
+          "type": "Lerp",
+          "label": "FBM/Cell Mix",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_stripe_freq",
+          "type": "ScalarParameter",
+          "label": "Stripe Frequency",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_uv_x",
+          "type": "ComponentMask",
+          "label": "UV.x",
+          "depth": 7,
+          "properties": {
+            "r": true,
+            "g": false,
+            "b": false,
+            "a": false
+          }
+        },
+        {
+          "node_id": "n_stripe_mul",
+          "type": "Multiply",
+          "label": "U * Freq",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_sine",
+          "type": "Sine",
+          "label": "Sine Stripe",
+          "depth": 5,
+          "properties": {
+            "period": 6.283185
+          }
+        },
+        {
+          "node_id": "n_stripe_remap",
+          "type": "Add",
+          "label": "Remap 0-1 (a)",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_stripe_half",
+          "type": "Constant",
+          "label": "0.5",
+          "depth": 5,
+          "properties": {
+            "value": 0.5
+          }
+        },
+        {
+          "node_id": "n_stripe_scaled",
+          "type": "Multiply",
+          "label": "* 0.5",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_stripe_weight",
+          "type": "ScalarParameter",
+          "label": "Stripe Amount",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pattern",
+          "type": "Lerp",
+          "label": "Noise + Stripe",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_contrast",
+          "type": "ScalarParameter",
+          "label": "Pattern Contrast",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_power",
+          "type": "Power",
+          "label": "Contrast (Power)",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_colorA",
+          "type": "VectorParameter",
+          "label": "Color A (low)",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_colorB",
+          "type": "VectorParameter",
+          "label": "Color B (high)",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_color_lerp",
+          "type": "Lerp",
+          "label": "Gradient Lerp",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rough_base",
+          "type": "ScalarParameter",
+          "label": "Roughness Base",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rough_var",
+          "type": "ScalarParameter",
+          "label": "Roughness Variation",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rough_noise_mul",
+          "type": "Multiply",
+          "label": "Noise * Var",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rough_add",
+          "type": "Add",
+          "label": "Base + NoiseVar",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_normal_strength",
+          "type": "ScalarParameter",
+          "label": "Proc Normal Strength",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_normal_from_height",
+          "type": "CustomExpression",
+          "label": "NormalFromHeight (DDX/DDY)",
+          "depth": 1,
+          "properties": {
+            "code": "float2 d = float2(ddx(H), ddy(H)) * Strength; return normalize(float3(-d, 1.0));",
+            "inputs": [
+              "H",
+              "Strength"
+            ],
+            "output_type": "float3"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "from_node": "n_worldpos",
+          "from_pin": "out",
+          "to_node": "n_worlduv",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_proj_scale",
+          "from_pin": "out",
+          "to_node": "n_worlduv",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_worlduv",
+          "from_pin": "out",
+          "to_node": "n_worlduv_mask",
+          "to_pin": "Input",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_worlduv_mask",
+          "from_pin": "out",
+          "to_node": "n_uvselect",
+          "to_pin": "A",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_uvselect",
+          "to_pin": "B",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_use_world",
+          "from_pin": "out",
+          "to_node": "n_uvselect",
+          "to_pin": "Value",
+          "data_type": "bool"
+        },
+        {
+          "from_node": "n_uvselect",
+          "from_pin": "out",
+          "to_node": "n_noise_uv_mul",
+          "to_pin": "A",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_noise_scale",
+          "from_pin": "out",
+          "to_node": "n_noise_uv_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_noise_uv_mul",
+          "from_pin": "out",
+          "to_node": "n_fbm",
+          "to_pin": "Position",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_noise_uv_mul",
+          "from_pin": "out",
+          "to_node": "n_cell",
+          "to_pin": "Position",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_fbm",
+          "from_pin": "out",
+          "to_node": "n_noise_mix",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_cell",
+          "from_pin": "out",
+          "to_node": "n_noise_mix",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_cell_weight",
+          "from_pin": "out",
+          "to_node": "n_noise_mix",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uvselect",
+          "from_pin": "out",
+          "to_node": "n_uv_x",
+          "to_pin": "Input",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv_x",
+          "from_pin": "out",
+          "to_node": "n_stripe_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_freq",
+          "from_pin": "out",
+          "to_node": "n_stripe_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_mul",
+          "from_pin": "out",
+          "to_node": "n_sine",
+          "to_pin": "Input",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_sine",
+          "from_pin": "out",
+          "to_node": "n_stripe_scaled",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_half",
+          "from_pin": "out",
+          "to_node": "n_stripe_scaled",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_scaled",
+          "from_pin": "out",
+          "to_node": "n_stripe_remap",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_half",
+          "from_pin": "out",
+          "to_node": "n_stripe_remap",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_noise_mix",
+          "from_pin": "out",
+          "to_node": "n_pattern",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_remap",
+          "from_pin": "out",
+          "to_node": "n_pattern",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_stripe_weight",
+          "from_pin": "out",
+          "to_node": "n_pattern",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pattern",
+          "from_pin": "out",
+          "to_node": "n_power",
+          "to_pin": "Base",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_contrast",
+          "from_pin": "out",
+          "to_node": "n_power",
+          "to_pin": "Exponent",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_colorA",
+          "from_pin": "RGB",
+          "to_node": "n_color_lerp",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_colorB",
+          "from_pin": "RGB",
+          "to_node": "n_color_lerp",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_power",
+          "from_pin": "out",
+          "to_node": "n_color_lerp",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_power",
+          "from_pin": "out",
+          "to_node": "n_rough_noise_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rough_var",
+          "from_pin": "out",
+          "to_node": "n_rough_noise_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rough_base",
+          "from_pin": "out",
+          "to_node": "n_rough_add",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rough_noise_mul",
+          "from_pin": "out",
+          "to_node": "n_rough_add",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_power",
+          "from_pin": "out",
+          "to_node": "n_normal_from_height",
+          "to_pin": "H",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_normal_strength",
+          "from_pin": "out",
+          "to_node": "n_normal_from_height",
+          "to_pin": "Strength",
+          "data_type": "float"
+        }
+      ],
+      "output_connections_runtime": {
+        "BaseColor": {
+          "from_node_type": "LinearInterpolate",
+          "from_node": "MaterialExpressionLinearInterpolate_1",
+          "from_pin": ""
+        },
+        "Roughness": {
+          "from_node_type": "Add",
+          "from_node": "MaterialExpressionAdd_0",
+          "from_pin": ""
+        }
+      },
+      "exposed_parameters": [
+        {
+          "param_name": "Noise Scale",
+          "param_type": "Scalar",
+          "default": 4.0,
+          "group": "02 - Noise",
+          "semantic": "噪声频率，越大细节越密",
+          "range": {
+            "min": 0.1,
+            "max": 64.0,
+            "ui_min": 0.5,
+            "ui_max": 32.0
+          }
+        },
+        {
+          "param_name": "Stripe Frequency",
+          "param_type": "Scalar",
+          "default": 20.0,
+          "group": "03 - Stripe",
+          "semantic": "程序化条纹频率",
+          "range": {
+            "min": 0.0,
+            "max": 200.0,
+            "ui_min": 0.0,
+            "ui_max": 80.0
+          }
+        },
+        {
+          "param_name": "Stripe Amount",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "03 - Stripe",
+          "semantic": "条纹叠加权重，0=无条纹",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Pattern Contrast",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "04 - Shaping",
+          "semantic": "图案对比度(幂次)，1=线性 >1 增强对比",
+          "range": {
+            "min": 0.1,
+            "max": 8.0,
+            "ui_min": 0.2,
+            "ui_max": 4.0
+          }
+        },
+        {
+          "param_name": "Roughness Base",
+          "param_type": "Scalar",
+          "default": 0.5,
+          "group": "06 - Surface",
+          "semantic": "基础粗糙度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Roughness Variation",
+          "param_type": "Scalar",
+          "default": 0.2,
+          "group": "06 - Surface",
+          "semantic": "随图案的粗糙度扰动幅度",
+          "range": {
+            "min": -1.0,
+            "max": 1.0,
+            "ui_min": -0.5,
+            "ui_max": 0.5
+          }
+        },
+        {
+          "param_name": "Cell Blend",
+          "param_type": "Scalar",
+          "default": 0.3,
+          "group": "02 - Noise",
+          "semantic": "FBM 与 Voronoi 混合比，0=纯FBM 1=纯细胞",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "World Proj Scale",
+          "param_type": "Scalar",
+          "default": 0.01,
+          "group": "01 - Projection",
+          "semantic": "世界坐标投影缩放（仅 Use World 开启时生效），值越小图案越大",
+          "range": {
+            "min": 0.001,
+            "max": 1.0,
+            "ui_min": 0.001,
+            "ui_max": 0.1
+          }
+        },
+        {
+          "param_name": "Proc Normal Strength",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "06 - Surface",
+          "semantic": "程序化法线强度（基于图案高度的偏导）",
+          "range": {
+            "min": 0.0,
+            "max": 10.0,
+            "ui_min": 0.0,
+            "ui_max": 4.0
+          }
+        },
+        {
+          "param_name": "Color A (low)",
+          "param_type": "Vector",
+          "default": [
+            0.05,
+            0.05,
+            0.06,
+            1.0
+          ],
+          "group": "05 - Color",
+          "semantic": "图案低值颜色"
+        },
+        {
+          "param_name": "Color B (high)",
+          "param_type": "Vector",
+          "default": [
+            0.8,
+            0.8,
+            0.82,
+            1.0
+          ],
+          "group": "05 - Color",
+          "semantic": "图案高值颜色"
+        },
+        {
+          "param_name": "Use Triplanar/World UV",
+          "param_type": "StaticSwitch",
+          "default": false,
+          "group": "01 - Projection",
+          "semantic": "编译期切换：true=世界坐标投影(无缝) false=网格UV"
+        }
+      ],
+      "static_switch_param_names": [
+        "Use Triplanar/World UV"
+      ],
+      "referenced_textures": []
+    },
+    {
+      "material_id": "M_Stylized_Master",
+      "asset_path": "/Game/Eval/Masters/M_Stylized_Master",
+      "shading_model": "MSM_UNLIT",
+      "blend_mode": "BLEND_OPAQUE",
+      "two_sided": false,
+      "num_expressions": 26,
+      "connections_source": "design_spec (matches built asset)",
+      "nodes": [
+        {
+          "node_id": "n_normal",
+          "type": "PixelNormalWS",
+          "label": "Pixel Normal WS",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_lightdir",
+          "type": "VectorParameter",
+          "label": "Light Direction",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_lightdir_norm",
+          "type": "Normalize",
+          "label": "Normalize LightDir",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_ndotl",
+          "type": "DotProduct",
+          "label": "N dot L",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_ndotl_saturate",
+          "type": "Clamp",
+          "label": "Saturate",
+          "depth": 6,
+          "properties": {
+            "min": 0.0,
+            "max": 1.0
+          }
+        },
+        {
+          "node_id": "n_bands",
+          "type": "ScalarParameter",
+          "label": "Shade Bands",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_posterize_mul",
+          "type": "Multiply",
+          "label": "NdotL * Bands",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_floor",
+          "type": "Floor",
+          "label": "Floor",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_posterize",
+          "type": "Divide",
+          "label": "/ Bands (Posterize)",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_shadow_thresh",
+          "type": "ScalarParameter",
+          "label": "Shadow Threshold",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_shadow_step",
+          "type": "If",
+          "label": "Shadow Step",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_color_lit",
+          "type": "VectorParameter",
+          "label": "Lit Color",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_color_shadow",
+          "type": "VectorParameter",
+          "label": "Shadow Color",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_celcolor",
+          "type": "Lerp",
+          "label": "Cel Color Map",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_fresnel_exp",
+          "type": "ScalarParameter",
+          "label": "Rim Power",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_fresnel",
+          "type": "Fresnel",
+          "label": "Fresnel Rim",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rim_thresh",
+          "type": "ScalarParameter",
+          "label": "Rim Threshold",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rim_step",
+          "type": "If",
+          "label": "Rim Hard Step",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rim_color",
+          "type": "VectorParameter",
+          "label": "Rim Color",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_rim_mul",
+          "type": "Multiply",
+          "label": "Rim * Color",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_outline_fresnel_exp",
+          "type": "ScalarParameter",
+          "label": "Outline Width",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_outline_fresnel",
+          "type": "Fresnel",
+          "label": "Outline Fresnel",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_outline_thresh",
+          "type": "ScalarParameter",
+          "label": "Outline Threshold",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_outline_step",
+          "type": "If",
+          "label": "Outline Step",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_outline_color",
+          "type": "VectorParameter",
+          "label": "Outline Color",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_base_plus_rim",
+          "type": "Add",
+          "label": "Cel + Rim",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_final",
+          "type": "Lerp",
+          "label": "Apply Outline",
+          "depth": 1,
+          "properties": {}
+        }
+      ],
+      "connections": [
+        {
+          "from_node": "n_lightdir",
+          "from_pin": "RGB",
+          "to_node": "n_lightdir_norm",
+          "to_pin": "Input",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_normal",
+          "from_pin": "out",
+          "to_node": "n_ndotl",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_lightdir_norm",
+          "from_pin": "out",
+          "to_node": "n_ndotl",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_ndotl",
+          "from_pin": "out",
+          "to_node": "n_ndotl_saturate",
+          "to_pin": "Input",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_ndotl_saturate",
+          "from_pin": "out",
+          "to_node": "n_posterize_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_bands",
+          "from_pin": "out",
+          "to_node": "n_posterize_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_posterize_mul",
+          "from_pin": "out",
+          "to_node": "n_floor",
+          "to_pin": "Input",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_floor",
+          "from_pin": "out",
+          "to_node": "n_posterize",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_bands",
+          "from_pin": "out",
+          "to_node": "n_posterize",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_posterize",
+          "from_pin": "out",
+          "to_node": "n_celcolor",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_color_shadow",
+          "from_pin": "RGB",
+          "to_node": "n_celcolor",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_color_lit",
+          "from_pin": "RGB",
+          "to_node": "n_celcolor",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_fresnel_exp",
+          "from_pin": "out",
+          "to_node": "n_fresnel",
+          "to_pin": "ExponentIn",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_fresnel",
+          "from_pin": "out",
+          "to_node": "n_rim_step",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rim_thresh",
+          "from_pin": "out",
+          "to_node": "n_rim_step",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rim_step",
+          "from_pin": "out",
+          "to_node": "n_rim_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_rim_color",
+          "from_pin": "RGB",
+          "to_node": "n_rim_mul",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_celcolor",
+          "from_pin": "out",
+          "to_node": "n_base_plus_rim",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_rim_mul",
+          "from_pin": "out",
+          "to_node": "n_base_plus_rim",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_outline_fresnel_exp",
+          "from_pin": "out",
+          "to_node": "n_outline_fresnel",
+          "to_pin": "ExponentIn",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_outline_fresnel",
+          "from_pin": "out",
+          "to_node": "n_outline_step",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_outline_thresh",
+          "from_pin": "out",
+          "to_node": "n_outline_step",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_base_plus_rim",
+          "from_pin": "out",
+          "to_node": "n_final",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_outline_color",
+          "from_pin": "RGB",
+          "to_node": "n_final",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_outline_step",
+          "from_pin": "out",
+          "to_node": "n_final",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        }
+      ],
+      "output_connections_runtime": {
+        "EmissiveColor": {
+          "from_node_type": "LinearInterpolate",
+          "from_node": "MaterialExpressionLinearInterpolate_1",
+          "from_pin": ""
+        }
+      },
+      "exposed_parameters": [
+        {
+          "param_name": "Shade Bands",
+          "param_type": "Scalar",
+          "default": 3.0,
+          "group": "02 - Cel",
+          "semantic": "色阶档数，2=硬二分 越大越接近平滑",
+          "range": {
+            "min": 1.0,
+            "max": 16.0,
+            "ui_min": 1.0,
+            "ui_max": 8.0
+          }
+        },
+        {
+          "param_name": "Rim Power",
+          "param_type": "Scalar",
+          "default": 4.0,
+          "group": "04 - Rim",
+          "semantic": "边缘光菲涅尔指数，越大边缘越窄",
+          "range": {
+            "min": 0.5,
+            "max": 16.0,
+            "ui_min": 1.0,
+            "ui_max": 12.0
+          }
+        },
+        {
+          "param_name": "Outline Width",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "05 - Outline",
+          "semantic": "轮廓描边宽度（菲涅尔指数，越小越宽）",
+          "range": {
+            "min": 0.2,
+            "max": 8.0,
+            "ui_min": 0.3,
+            "ui_max": 4.0
+          }
+        },
+        {
+          "param_name": "Shadow Threshold",
+          "param_type": "Scalar",
+          "default": 0.5,
+          "group": "02 - Cel",
+          "semantic": "明暗分界阈值",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Rim Threshold",
+          "param_type": "Scalar",
+          "default": 0.6,
+          "group": "04 - Rim",
+          "semantic": "边缘光硬切阈值",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Light Direction",
+          "param_type": "Vector",
+          "default": [
+            0.3,
+            0.5,
+            0.8,
+            0.0
+          ],
+          "group": "01 - Lighting",
+          "semantic": "卡通光照方向（世界空间），手动指定主光"
+        },
+        {
+          "param_name": "Lit Color",
+          "param_type": "Vector",
+          "default": [
+            0.9,
+            0.85,
+            0.7,
+            1.0
+          ],
+          "group": "03 - Colors",
+          "semantic": "亮部颜色"
+        },
+        {
+          "param_name": "Shadow Color",
+          "param_type": "Vector",
+          "default": [
+            0.3,
+            0.28,
+            0.45,
+            1.0
+          ],
+          "group": "03 - Colors",
+          "semantic": "暗部颜色"
+        },
+        {
+          "param_name": "Rim Color",
+          "param_type": "Vector",
+          "default": [
+            0.4,
+            0.7,
+            1.0,
+            1.0
+          ],
+          "group": "04 - Rim",
+          "semantic": "边缘光颜色（常用于补光/魔法感）"
+        },
+        {
+          "param_name": "Outline Color",
+          "param_type": "Vector",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "group": "05 - Outline",
+          "semantic": "轮廓颜色"
+        }
+      ],
+      "static_switch_param_names": [],
+      "referenced_textures": []
+    },
+    {
+      "material_id": "M_DynamicFX_Master",
+      "asset_path": "/Game/Eval/Masters/M_DynamicFX_Master",
+      "shading_model": "MSM_DEFAULT_LIT",
+      "blend_mode": "BLEND_MASKED",
+      "two_sided": true,
+      "num_expressions": 29,
+      "connections_source": "design_spec (matches built asset)",
+      "nodes": [
+        {
+          "node_id": "n_time",
+          "type": "Time",
+          "label": "Time",
+          "depth": 10,
+          "properties": {}
+        },
+        {
+          "node_id": "n_uv",
+          "type": "TexCoord",
+          "label": "UV0",
+          "depth": 10,
+          "properties": {
+            "coordinate_index": 0
+          }
+        },
+        {
+          "node_id": "n_distort_speed",
+          "type": "VectorParameter",
+          "label": "Distort Speed",
+          "depth": 10,
+          "properties": {}
+        },
+        {
+          "node_id": "n_panner",
+          "type": "Panner",
+          "label": "Distort Panner",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_distort_noise",
+          "type": "Noise",
+          "label": "Distort Noise",
+          "depth": 8,
+          "properties": {
+            "function": "Gradient",
+            "quality": 2,
+            "levels": 3
+          }
+        },
+        {
+          "node_id": "n_distort_amt",
+          "type": "ScalarParameter",
+          "label": "Distortion Amount",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_distort_mul",
+          "type": "Multiply",
+          "label": "Noise * Amount",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_uv_distorted",
+          "type": "Add",
+          "label": "UV + Distort",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_view",
+          "type": "CameraVectorWS",
+          "label": "Camera Vector",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_height_tex",
+          "type": "TextureSample",
+          "label": "Height Tex",
+          "depth": 6,
+          "properties": {
+            "sampler_type": "LinearGrayscale",
+            "srgb": false
+          }
+        },
+        {
+          "node_id": "n_parallax",
+          "type": "CustomExpression",
+          "label": "Parallax Offset",
+          "depth": 7,
+          "properties": {
+            "code": "return UV + (V.xy / max(V.z,0.2)) * (H - 0.5) * Scale;",
+            "inputs": [
+              "UV",
+              "V",
+              "H",
+              "Scale"
+            ],
+            "output_type": "float2"
+          }
+        },
+        {
+          "node_id": "n_parallax_scale",
+          "type": "ScalarParameter",
+          "label": "Parallax Scale",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_albedo_tex",
+          "type": "TextureSample",
+          "label": "Albedo Tex",
+          "depth": 5,
+          "properties": {
+            "sampler_type": "Color",
+            "srgb": true
+          }
+        },
+        {
+          "node_id": "n_dissolve_speed",
+          "type": "ScalarParameter",
+          "label": "Dissolve Speed",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_dissolve_time",
+          "type": "Multiply",
+          "label": "Time * Speed",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_dissolve_noise",
+          "type": "Noise",
+          "label": "Dissolve Noise",
+          "depth": 7,
+          "properties": {
+            "function": "Voronoi",
+            "quality": 3,
+            "levels": 1
+          }
+        },
+        {
+          "node_id": "n_dissolve_manual",
+          "type": "ScalarParameter",
+          "label": "Dissolve Amount",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_dissolve_thresh",
+          "type": "Add",
+          "label": "Auto+Manual Threshold",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_dissolve_step",
+          "type": "If",
+          "label": "Dissolve Mask",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_edge_width",
+          "type": "ScalarParameter",
+          "label": "Edge Width",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_edge_inner",
+          "type": "Subtract",
+          "label": "Threshold - EdgeWidth",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_edge_band",
+          "type": "Smoothstep",
+          "label": "Edge Band",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_edge_color",
+          "type": "VectorParameter",
+          "label": "Dissolve Edge Color",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_edge_glow",
+          "type": "Multiply",
+          "label": "Edge Glow",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_speed",
+          "type": "ScalarParameter",
+          "label": "Pulse Speed",
+          "depth": 9,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_time",
+          "type": "Multiply",
+          "label": "Time * PulseSpeed",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_sine",
+          "type": "Sine",
+          "label": "Pulse Sine",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_remap",
+          "type": "Add",
+          "label": "Sine 0-1",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_min",
+          "type": "ScalarParameter",
+          "label": "Pulse Min",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_max",
+          "type": "ScalarParameter",
+          "label": "Pulse Max",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_pulse_lerp",
+          "type": "Lerp",
+          "label": "Pulse Range",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_emissive_final",
+          "type": "Multiply",
+          "label": "Edge Glow * Pulse",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_wpo_amp",
+          "type": "ScalarParameter",
+          "label": "Wave Amplitude",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_wpo_freq",
+          "type": "ScalarParameter",
+          "label": "Wave Frequency",
+          "depth": 8,
+          "properties": {}
+        },
+        {
+          "node_id": "n_wpo",
+          "type": "CustomExpression",
+          "label": "Vertex Wave WPO",
+          "depth": 1,
+          "properties": {
+            "code": "return float3(0,0, sin(Pos.x*Freq + T*3.0)*Amp);",
+            "inputs": [
+              "Pos",
+              "Freq",
+              "Amp",
+              "T"
+            ],
+            "output_type": "float3"
+          }
+        },
+        {
+          "node_id": "n_objpos",
+          "type": "ObjectPosition",
+          "label": "Object Position",
+          "depth": 9,
+          "properties": {}
+        }
+      ],
+      "connections": [
+        {
+          "from_node": "n_distort_speed",
+          "from_pin": "RGB",
+          "to_node": "n_panner",
+          "to_pin": "Speed",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_panner",
+          "to_pin": "Coordinate",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_time",
+          "from_pin": "out",
+          "to_node": "n_panner",
+          "to_pin": "Time",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_panner",
+          "from_pin": "out",
+          "to_node": "n_distort_noise",
+          "to_pin": "Position",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_distort_noise",
+          "from_pin": "out",
+          "to_node": "n_distort_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_distort_amt",
+          "from_pin": "out",
+          "to_node": "n_distort_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_uv_distorted",
+          "to_pin": "A",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_distort_mul",
+          "from_pin": "out",
+          "to_node": "n_uv_distorted",
+          "to_pin": "B",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_uv_distorted",
+          "from_pin": "out",
+          "to_node": "n_parallax",
+          "to_pin": "UV",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_view",
+          "from_pin": "out",
+          "to_node": "n_parallax",
+          "to_pin": "V",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_height_tex",
+          "from_pin": "R",
+          "to_node": "n_parallax",
+          "to_pin": "H",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_parallax_scale",
+          "from_pin": "out",
+          "to_node": "n_parallax",
+          "to_pin": "Scale",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uv_distorted",
+          "from_pin": "out",
+          "to_node": "n_height_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_parallax",
+          "from_pin": "out",
+          "to_node": "n_albedo_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_time",
+          "from_pin": "out",
+          "to_node": "n_dissolve_time",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_speed",
+          "from_pin": "out",
+          "to_node": "n_dissolve_time",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_dissolve_noise",
+          "to_pin": "Position",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_dissolve_time",
+          "from_pin": "out",
+          "to_node": "n_dissolve_thresh",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_manual",
+          "from_pin": "out",
+          "to_node": "n_dissolve_thresh",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_noise",
+          "from_pin": "out",
+          "to_node": "n_dissolve_step",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_thresh",
+          "from_pin": "out",
+          "to_node": "n_dissolve_step",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_thresh",
+          "from_pin": "out",
+          "to_node": "n_edge_inner",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_edge_width",
+          "from_pin": "out",
+          "to_node": "n_edge_inner",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_edge_inner",
+          "from_pin": "out",
+          "to_node": "n_edge_band",
+          "to_pin": "Min",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_thresh",
+          "from_pin": "out",
+          "to_node": "n_edge_band",
+          "to_pin": "Max",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_dissolve_noise",
+          "from_pin": "out",
+          "to_node": "n_edge_band",
+          "to_pin": "Value",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_edge_band",
+          "from_pin": "out",
+          "to_node": "n_edge_glow",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_edge_color",
+          "from_pin": "RGB",
+          "to_node": "n_edge_glow",
+          "to_pin": "B",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_time",
+          "from_pin": "out",
+          "to_node": "n_pulse_time",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_speed",
+          "from_pin": "out",
+          "to_node": "n_pulse_time",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_time",
+          "from_pin": "out",
+          "to_node": "n_pulse_sine",
+          "to_pin": "Input",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_sine",
+          "from_pin": "out",
+          "to_node": "n_pulse_remap",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_min",
+          "from_pin": "out",
+          "to_node": "n_pulse_lerp",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_max",
+          "from_pin": "out",
+          "to_node": "n_pulse_lerp",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_pulse_remap",
+          "from_pin": "out",
+          "to_node": "n_pulse_lerp",
+          "to_pin": "Alpha",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_edge_glow",
+          "from_pin": "out",
+          "to_node": "n_emissive_final",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_pulse_lerp",
+          "from_pin": "out",
+          "to_node": "n_emissive_final",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_objpos",
+          "from_pin": "out",
+          "to_node": "n_wpo",
+          "to_pin": "Pos",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_wpo_freq",
+          "from_pin": "out",
+          "to_node": "n_wpo",
+          "to_pin": "Freq",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_wpo_amp",
+          "from_pin": "out",
+          "to_node": "n_wpo",
+          "to_pin": "Amp",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_time",
+          "from_pin": "out",
+          "to_node": "n_wpo",
+          "to_pin": "T",
+          "data_type": "float"
+        }
+      ],
+      "output_connections_runtime": {
+        "BaseColor": {
+          "from_node_type": "Constant3Vector",
+          "from_node": "MaterialExpressionConstant3Vector_0",
+          "from_pin": ""
+        },
+        "EmissiveColor": {
+          "from_node_type": "Multiply",
+          "from_node": "MaterialExpressionMultiply_2",
+          "from_pin": ""
+        },
+        "OpacityMask": {
+          "from_node_type": "Clamp",
+          "from_node": "MaterialExpressionClamp_0",
+          "from_pin": ""
+        }
+      },
+      "exposed_parameters": [
+        {
+          "param_name": "Dissolve Amount",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "03 - Dissolve",
+          "semantic": "手动溶解进度，0=完整 1=全溶解",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Edge Width",
+          "param_type": "Scalar",
+          "default": 0.08,
+          "group": "03 - Dissolve",
+          "semantic": "溶解发光边缘宽度",
+          "range": {
+            "min": 0.0,
+            "max": 0.5,
+            "ui_min": 0.0,
+            "ui_max": 0.2
+          }
+        },
+        {
+          "param_name": "Pulse Max",
+          "param_type": "Scalar",
+          "default": 2.0,
+          "group": "04 - Pulse",
+          "semantic": "脉冲发光强度上限",
+          "range": {
+            "min": 0.0,
+            "max": 20.0,
+            "ui_min": 0.0,
+            "ui_max": 10.0
+          }
+        },
+        {
+          "param_name": "Distortion Amount",
+          "param_type": "Scalar",
+          "default": 0.02,
+          "group": "01 - Distortion",
+          "semantic": "UV 扭曲幅度，0=无扭曲",
+          "range": {
+            "min": 0.0,
+            "max": 0.5,
+            "ui_min": 0.0,
+            "ui_max": 0.1
+          }
+        },
+        {
+          "param_name": "Parallax Scale",
+          "param_type": "Scalar",
+          "default": 0.04,
+          "group": "02 - Parallax",
+          "semantic": "视差偏移强度，0=无视差",
+          "range": {
+            "min": 0.0,
+            "max": 0.3,
+            "ui_min": 0.0,
+            "ui_max": 0.1
+          }
+        },
+        {
+          "param_name": "Dissolve Speed",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "03 - Dissolve",
+          "semantic": "自动溶解速度（随时间），0=静止由手动控制",
+          "range": {
+            "min": 0.0,
+            "max": 2.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Pulse Speed",
+          "param_type": "Scalar",
+          "default": 2.0,
+          "group": "04 - Pulse",
+          "semantic": "脉冲频率（呼吸/心跳），0=不脉冲",
+          "range": {
+            "min": 0.0,
+            "max": 20.0,
+            "ui_min": 0.0,
+            "ui_max": 10.0
+          }
+        },
+        {
+          "param_name": "Pulse Min",
+          "param_type": "Scalar",
+          "default": 0.5,
+          "group": "04 - Pulse",
+          "semantic": "脉冲发光强度下限",
+          "range": {
+            "min": 0.0,
+            "max": 10.0,
+            "ui_min": 0.0,
+            "ui_max": 5.0
+          }
+        },
+        {
+          "param_name": "Wave Amplitude",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "05 - Vertex",
+          "semantic": "顶点波动振幅（WPO），0=无形变",
+          "range": {
+            "min": 0.0,
+            "max": 50.0,
+            "ui_min": 0.0,
+            "ui_max": 20.0
+          }
+        },
+        {
+          "param_name": "Wave Frequency",
+          "param_type": "Scalar",
+          "default": 0.5,
+          "group": "05 - Vertex",
+          "semantic": "顶点波动空间频率",
+          "range": {
+            "min": 0.0,
+            "max": 5.0,
+            "ui_min": 0.0,
+            "ui_max": 2.0
+          }
+        },
+        {
+          "param_name": "Dissolve Edge Color",
+          "param_type": "Vector",
+          "default": [
+            4.0,
+            1.5,
+            0.2,
+            1.0
+          ],
+          "group": "03 - Dissolve",
+          "semantic": "溶解边缘发光色（HDR）"
+        },
+        {
+          "param_name": "Distort Speed",
+          "param_type": "Vector",
+          "default": [
+            0.1,
+            0.05,
+            0.0,
+            0.0
+          ],
+          "group": "01 - Distortion",
+          "semantic": "扭曲噪声平移速度 (xy)"
+        }
+      ],
+      "static_switch_param_names": [],
+      "referenced_textures": []
+    },
+    {
+      "material_id": "M_AdvLighting_Master",
+      "asset_path": "/Game/Eval/Masters/M_AdvLighting_Master",
+      "shading_model": "MSM_CLEAR_COAT",
+      "blend_mode": "BLEND_OPAQUE",
+      "two_sided": false,
+      "num_expressions": 29,
+      "connections_source": "design_spec (matches built asset)",
+      "nodes": [
+        {
+          "node_id": "n_uv",
+          "type": "TexCoord",
+          "label": "UV0",
+          "depth": 9,
+          "properties": {
+            "coordinate_index": 0
+          }
+        },
+        {
+          "node_id": "n_basecolor",
+          "type": "VectorParameter",
+          "label": "Base Color",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_metallic",
+          "type": "ScalarParameter",
+          "label": "Metallic",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_roughness",
+          "type": "ScalarParameter",
+          "label": "Roughness",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_sss_color",
+          "type": "VectorParameter",
+          "label": "Subsurface Color",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_sss_amount",
+          "type": "ScalarParameter",
+          "label": "SSS Amount",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_sss_mul",
+          "type": "Multiply",
+          "label": "SSS Color * Amount",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_aniso_amount",
+          "type": "ScalarParameter",
+          "label": "Anisotropy",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_tangent_tex",
+          "type": "TextureSample",
+          "label": "Tangent/Flow Map",
+          "depth": 4,
+          "properties": {
+            "sampler_type": "Normal",
+            "srgb": false
+          }
+        },
+        {
+          "node_id": "n_tangent_strength",
+          "type": "ScalarParameter",
+          "label": "Tangent Strength",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_tangent_flatten",
+          "type": "FlattenNormal",
+          "label": "Flatten Tangent",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_fresnel_iri",
+          "type": "Fresnel",
+          "label": "Iridescence Fresnel",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_power",
+          "type": "ScalarParameter",
+          "label": "Iridescence Power",
+          "depth": 7,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_shift",
+          "type": "ScalarParameter",
+          "label": "Iridescence Hue Shift",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_phase",
+          "type": "Add",
+          "label": "Phase + Shift",
+          "depth": 5,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_freq",
+          "type": "ScalarParameter",
+          "label": "Iridescence Bands",
+          "depth": 6,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_mul",
+          "type": "Multiply",
+          "label": "Phase * Bands",
+          "depth": 4,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_r",
+          "type": "Sine",
+          "label": "Sine R",
+          "depth": 3,
+          "properties": {
+            "phase_offset": 0.0
+          }
+        },
+        {
+          "node_id": "n_iri_g",
+          "type": "CustomExpression",
+          "label": "Rainbow RGB",
+          "depth": 3,
+          "properties": {
+            "code": "return 0.5 + 0.5*cos(6.2831*(P + float3(0.0,0.33,0.67)));",
+            "inputs": [
+              "P"
+            ],
+            "output_type": "float3"
+          }
+        },
+        {
+          "node_id": "n_iri_intensity",
+          "type": "ScalarParameter",
+          "label": "Iridescence Intensity",
+          "depth": 3,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_scaled",
+          "type": "Multiply",
+          "label": "Rainbow * Fresnel",
+          "depth": 2,
+          "properties": {}
+        },
+        {
+          "node_id": "n_iri_final",
+          "type": "Multiply",
+          "label": "* Intensity",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_clearcoat",
+          "type": "ScalarParameter",
+          "label": "Clear Coat",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_clearcoat_rough",
+          "type": "ScalarParameter",
+          "label": "Clear Coat Roughness",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_fuzz_color",
+          "type": "VectorParameter",
+          "label": "Fuzz Color",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_cloth_amount",
+          "type": "ScalarParameter",
+          "label": "Cloth Amount",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_use_iridescence",
+          "type": "StaticSwitchParameter",
+          "label": "Enable Iridescence",
+          "depth": 1,
+          "properties": {}
+        },
+        {
+          "node_id": "n_emissive_select",
+          "type": "If",
+          "label": "Iridescence Switch",
+          "depth": 0,
+          "properties": {}
+        },
+        {
+          "node_id": "n_zero",
+          "type": "Constant3Vector",
+          "label": "Zero",
+          "depth": 1,
+          "properties": {
+            "value": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "connections": [
+        {
+          "from_node": "n_sss_color",
+          "from_pin": "RGB",
+          "to_node": "n_sss_mul",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_sss_amount",
+          "from_pin": "out",
+          "to_node": "n_sss_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_tangent_tex",
+          "from_pin": "RGB",
+          "to_node": "n_tangent_flatten",
+          "to_pin": "Normal",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_tangent_strength",
+          "from_pin": "out",
+          "to_node": "n_tangent_flatten",
+          "to_pin": "Flatness",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_uv",
+          "from_pin": "out",
+          "to_node": "n_tangent_tex",
+          "to_pin": "UVs",
+          "data_type": "float2"
+        },
+        {
+          "from_node": "n_iri_power",
+          "from_pin": "out",
+          "to_node": "n_fresnel_iri",
+          "to_pin": "ExponentIn",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_fresnel_iri",
+          "from_pin": "out",
+          "to_node": "n_iri_phase",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_shift",
+          "from_pin": "out",
+          "to_node": "n_iri_phase",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_phase",
+          "from_pin": "out",
+          "to_node": "n_iri_mul",
+          "to_pin": "A",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_freq",
+          "from_pin": "out",
+          "to_node": "n_iri_mul",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_mul",
+          "from_pin": "out",
+          "to_node": "n_iri_g",
+          "to_pin": "P",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_g",
+          "from_pin": "out",
+          "to_node": "n_iri_scaled",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_fresnel_iri",
+          "from_pin": "out",
+          "to_node": "n_iri_scaled",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_iri_scaled",
+          "from_pin": "out",
+          "to_node": "n_iri_final",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_iri_intensity",
+          "from_pin": "out",
+          "to_node": "n_iri_final",
+          "to_pin": "B",
+          "data_type": "float"
+        },
+        {
+          "from_node": "n_use_iridescence",
+          "from_pin": "out",
+          "to_node": "n_emissive_select",
+          "to_pin": "Value",
+          "data_type": "bool"
+        },
+        {
+          "from_node": "n_iri_final",
+          "from_pin": "out",
+          "to_node": "n_emissive_select",
+          "to_pin": "A",
+          "data_type": "float3"
+        },
+        {
+          "from_node": "n_zero",
+          "from_pin": "out",
+          "to_node": "n_emissive_select",
+          "to_pin": "B",
+          "data_type": "float3"
+        }
+      ],
+      "output_connections_runtime": {
+        "BaseColor": {
+          "from_node_type": "VectorParameter",
+          "from_node": "MaterialExpressionVectorParameter_0",
+          "from_pin": "RGB"
+        },
+        "Metallic": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_0",
+          "from_pin": ""
+        },
+        "Roughness": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_1",
+          "from_pin": ""
+        },
+        "Anisotropy": {
+          "from_node_type": "ScalarParameter",
+          "from_node": "MaterialExpressionScalarParameter_2",
+          "from_pin": ""
+        },
+        "EmissiveColor": {
+          "from_node_type": "Add",
+          "from_node": "MaterialExpressionAdd_0",
+          "from_pin": ""
+        },
+        "SubsurfaceColor": {
+          "from_node_type": "Multiply",
+          "from_node": "MaterialExpressionMultiply_0",
+          "from_pin": ""
+        }
+      },
+      "exposed_parameters": [
+        {
+          "param_name": "Metallic",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "01 - Base",
+          "semantic": "金属度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Roughness",
+          "param_type": "Scalar",
+          "default": 0.3,
+          "group": "01 - Base",
+          "semantic": "粗糙度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Anisotropy",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "03 - Anisotropy",
+          "semantic": "各向异性强度，正负控制高光拉伸方向",
+          "range": {
+            "min": -1.0,
+            "max": 1.0,
+            "ui_min": -1.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "SSS Amount",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "02 - Subsurface",
+          "semantic": "SSS 强度，0=无散射",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Iridescence Power",
+          "param_type": "Scalar",
+          "default": 3.0,
+          "group": "04 - Iridescence",
+          "semantic": "虹彩菲涅尔指数（视角依赖锐度）",
+          "range": {
+            "min": 0.5,
+            "max": 16.0,
+            "ui_min": 1.0,
+            "ui_max": 10.0
+          }
+        },
+        {
+          "param_name": "Iridescence Bands",
+          "param_type": "Scalar",
+          "default": 3.0,
+          "group": "04 - Iridescence",
+          "semantic": "彩虹条带数（薄膜厚度模拟）",
+          "range": {
+            "min": 0.5,
+            "max": 12.0,
+            "ui_min": 1.0,
+            "ui_max": 8.0
+          }
+        },
+        {
+          "param_name": "Iridescence Intensity",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "04 - Iridescence",
+          "semantic": "虹彩自发光强度",
+          "range": {
+            "min": 0.0,
+            "max": 5.0,
+            "ui_min": 0.0,
+            "ui_max": 3.0
+          }
+        },
+        {
+          "param_name": "Cloth Amount",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "06 - Cloth",
+          "semantic": "布料绒毛权重",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Clear Coat",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "05 - ClearCoat",
+          "semantic": "清漆层强度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Clear Coat Roughness",
+          "param_type": "Scalar",
+          "default": 0.1,
+          "group": "05 - ClearCoat",
+          "semantic": "清漆层粗糙度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Tangent Strength",
+          "param_type": "Scalar",
+          "default": 1.0,
+          "group": "03 - Anisotropy",
+          "semantic": "切线流向贴图强度",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Iridescence Hue Shift",
+          "param_type": "Scalar",
+          "default": 0.0,
+          "group": "04 - Iridescence",
+          "semantic": "色相整体偏移",
+          "range": {
+            "min": 0.0,
+            "max": 1.0,
+            "ui_min": 0.0,
+            "ui_max": 1.0
+          }
+        },
+        {
+          "param_name": "Base Color",
+          "param_type": "Vector",
+          "default": [
+            0.5,
+            0.5,
+            0.55,
+            1.0
+          ],
+          "group": "01 - Base",
+          "semantic": "基础反照率"
+        },
+        {
+          "param_name": "Subsurface Color",
+          "param_type": "Vector",
+          "default": [
+            0.8,
+            0.25,
+            0.15,
+            1.0
+          ],
+          "group": "02 - Subsurface",
+          "semantic": "次表面散射透光色（皮肤偏红、玉石偏绿）"
+        },
+        {
+          "param_name": "Fuzz Color",
+          "param_type": "Vector",
+          "default": [
+            0.6,
+            0.6,
+            0.6,
+            1.0
+          ],
+          "group": "06 - Cloth",
+          "semantic": "布料绒毛边缘色"
+        },
+        {
+          "param_name": "Enable Iridescence",
+          "param_type": "StaticSwitch",
+          "default": false,
+          "group": "04 - Iridescence",
+          "semantic": "编译期开关：虹彩薄膜干涉"
+        }
+      ],
+      "static_switch_param_names": [
+        "Enable Iridescence"
+      ],
+      "referenced_textures": []
+    }
+  ],
+  "instances": [
+    {
+      "instance_id": "MI_Adv_BrushedTitanium",
+      "asset_path": "/Game/Eval/Instances/MI_Adv_BrushedTitanium",
+      "parent_material": "M_AdvLighting_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 1.0
+          },
+          {
+            "name": "Roughness",
+            "value": 0.35
+          },
+          {
+            "name": "Anisotropy",
+            "value": 0.9
+          },
+          {
+            "name": "Tangent Strength",
+            "value": 1.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Base Color",
+            "value": [
+              0.6,
+              0.6,
+              0.62,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Enable Iridescence",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Adv_CarPaint",
+      "asset_path": "/Game/Eval/Instances/MI_Adv_CarPaint",
+      "parent_material": "M_AdvLighting_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.9
+          },
+          {
+            "name": "Roughness",
+            "value": 0.3
+          },
+          {
+            "name": "Clear Coat",
+            "value": 1.0
+          },
+          {
+            "name": "Clear Coat Roughness",
+            "value": 0.04
+          }
+        ],
+        "vector": [
+          {
+            "name": "Base Color",
+            "value": [
+              0.7,
+              0.05,
+              0.1,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Enable Iridescence",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Adv_Jade",
+      "asset_path": "/Game/Eval/Instances/MI_Adv_Jade",
+      "parent_material": "M_AdvLighting_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Roughness",
+            "value": 0.25
+          },
+          {
+            "name": "SSS Amount",
+            "value": 1.0
+          },
+          {
+            "name": "Clear Coat",
+            "value": 0.5
+          },
+          {
+            "name": "Clear Coat Roughness",
+            "value": 0.08
+          }
+        ],
+        "vector": [
+          {
+            "name": "Base Color",
+            "value": [
+              0.25,
+              0.45,
+              0.3,
+              1.0
+            ]
+          },
+          {
+            "name": "Subsurface Color",
+            "value": [
+              0.3,
+              0.9,
+              0.45,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Enable Iridescence",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Adv_SoapBubble",
+      "asset_path": "/Game/Eval/Instances/MI_Adv_SoapBubble",
+      "parent_material": "M_AdvLighting_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.0
+          },
+          {
+            "name": "Roughness",
+            "value": 0.05
+          },
+          {
+            "name": "Iridescence Power",
+            "value": 5.0
+          },
+          {
+            "name": "Iridescence Bands",
+            "value": 6.0
+          },
+          {
+            "name": "Iridescence Intensity",
+            "value": 2.5
+          },
+          {
+            "name": "Clear Coat",
+            "value": 1.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Base Color",
+            "value": [
+              0.05,
+              0.05,
+              0.08,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Enable Iridescence",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Adv_Velvet",
+      "asset_path": "/Game/Eval/Instances/MI_Adv_Velvet",
+      "parent_material": "M_AdvLighting_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.0
+          },
+          {
+            "name": "Roughness",
+            "value": 0.8
+          },
+          {
+            "name": "Cloth Amount",
+            "value": 1.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Base Color",
+            "value": [
+              0.4,
+              0.05,
+              0.12,
+              1.0
+            ]
+          },
+          {
+            "name": "Fuzz Color",
+            "value": [
+              0.9,
+              0.5,
+              0.6,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Enable Iridescence",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_FX_BurningDissolve",
+      "asset_path": "/Game/Eval/Instances/MI_FX_BurningDissolve",
+      "parent_material": "M_DynamicFX_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Dissolve Speed",
+            "value": 0.4
+          },
+          {
+            "name": "Edge Width",
+            "value": 0.12
+          },
+          {
+            "name": "Distortion Amount",
+            "value": 0.01
+          },
+          {
+            "name": "Pulse Speed",
+            "value": 0.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Dissolve Edge Color",
+            "value": [
+              6.0,
+              2.0,
+              0.2,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_FX_EnergyShield",
+      "asset_path": "/Game/Eval/Instances/MI_FX_EnergyShield",
+      "parent_material": "M_DynamicFX_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Distortion Amount",
+            "value": 0.04
+          },
+          {
+            "name": "Pulse Speed",
+            "value": 3.0
+          },
+          {
+            "name": "Pulse Min",
+            "value": 0.8
+          },
+          {
+            "name": "Pulse Max",
+            "value": 3.0
+          },
+          {
+            "name": "Edge Width",
+            "value": 0.3
+          }
+        ],
+        "vector": [
+          {
+            "name": "Distort Speed",
+            "value": [
+              0.2,
+              0.1,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Dissolve Edge Color",
+            "value": [
+              0.2,
+              1.5,
+              3.0,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_FX_HeartCore",
+      "asset_path": "/Game/Eval/Instances/MI_FX_HeartCore",
+      "parent_material": "M_DynamicFX_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Pulse Speed",
+            "value": 12.0
+          },
+          {
+            "name": "Pulse Min",
+            "value": 0.2
+          },
+          {
+            "name": "Pulse Max",
+            "value": 10.0
+          },
+          {
+            "name": "Distortion Amount",
+            "value": 0.0
+          },
+          {
+            "name": "Wave Amplitude",
+            "value": 0.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Dissolve Edge Color",
+            "value": [
+              8.0,
+              0.5,
+              0.5,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_FX_Hologram",
+      "asset_path": "/Game/Eval/Instances/MI_FX_Hologram",
+      "parent_material": "M_DynamicFX_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Distortion Amount",
+            "value": 0.08
+          },
+          {
+            "name": "Pulse Speed",
+            "value": 8.0
+          },
+          {
+            "name": "Pulse Min",
+            "value": 0.6
+          },
+          {
+            "name": "Pulse Max",
+            "value": 1.4
+          },
+          {
+            "name": "Dissolve Amount",
+            "value": 0.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Distort Speed",
+            "value": [
+              0.0,
+              0.5,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_FX_WaveWater",
+      "asset_path": "/Game/Eval/Instances/MI_FX_WaveWater",
+      "parent_material": "M_DynamicFX_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Wave Amplitude",
+            "value": 18.0
+          },
+          {
+            "name": "Wave Frequency",
+            "value": 1.2
+          },
+          {
+            "name": "Parallax Scale",
+            "value": 0.1
+          },
+          {
+            "name": "Distortion Amount",
+            "value": 0.03
+          },
+          {
+            "name": "Pulse Speed",
+            "value": 0.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Distort Speed",
+            "value": [
+              0.15,
+              0.12,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_PBR_EmissivePanel",
+      "asset_path": "/Game/Eval/Instances/MI_PBR_EmissivePanel",
+      "parent_material": "M_PBR_Base_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.0
+          },
+          {
+            "name": "Roughness Min",
+            "value": 0.2
+          },
+          {
+            "name": "Roughness Max",
+            "value": 0.3
+          },
+          {
+            "name": "Emissive Intensity",
+            "value": 50.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color Tint",
+            "value": [
+              0.05,
+              0.05,
+              0.05,
+              1.0
+            ]
+          },
+          {
+            "name": "Emissive Color",
+            "value": [
+              0.1,
+              0.9,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_PBR_FrostedPlastic",
+      "asset_path": "/Game/Eval/Instances/MI_PBR_FrostedPlastic",
+      "parent_material": "M_PBR_Base_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.0
+          },
+          {
+            "name": "Roughness Min",
+            "value": 0.55
+          },
+          {
+            "name": "Roughness Max",
+            "value": 0.75
+          },
+          {
+            "name": "Specular",
+            "value": 0.45
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color Tint",
+            "value": [
+              0.15,
+              0.45,
+              0.85,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_PBR_GrayDefault",
+      "asset_path": "/Game/Eval/Instances/MI_PBR_GrayDefault",
+      "parent_material": "M_PBR_Base_Master",
+      "overrides": {
+        "scalar": [],
+        "vector": [],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_PBR_PolishedBrass",
+      "asset_path": "/Game/Eval/Instances/MI_PBR_PolishedBrass",
+      "parent_material": "M_PBR_Base_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 1.0
+          },
+          {
+            "name": "Roughness Min",
+            "value": 0.05
+          },
+          {
+            "name": "Roughness Max",
+            "value": 0.18
+          },
+          {
+            "name": "Specular",
+            "value": 0.5
+          },
+          {
+            "name": "Normal Strength",
+            "value": 0.6
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color Tint",
+            "value": [
+              1.0,
+              0.85,
+              0.5,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_PBR_WeatheredIron",
+      "asset_path": "/Game/Eval/Instances/MI_PBR_WeatheredIron",
+      "parent_material": "M_PBR_Base_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Metallic",
+            "value": 0.6
+          },
+          {
+            "name": "Roughness Min",
+            "value": 0.35
+          },
+          {
+            "name": "Roughness Max",
+            "value": 1.0
+          },
+          {
+            "name": "AO Strength",
+            "value": 1.0
+          },
+          {
+            "name": "Normal Strength",
+            "value": 1.8
+          },
+          {
+            "name": "Desaturation",
+            "value": 0.3
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color Tint",
+            "value": [
+              0.45,
+              0.32,
+              0.28,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_Proc_BrushedWood",
+      "asset_path": "/Game/Eval/Instances/MI_Proc_BrushedWood",
+      "parent_material": "M_Procedural_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Noise Scale",
+            "value": 6.0
+          },
+          {
+            "name": "Cell Blend",
+            "value": 0.1
+          },
+          {
+            "name": "Stripe Frequency",
+            "value": 35.0
+          },
+          {
+            "name": "Stripe Amount",
+            "value": 0.7
+          },
+          {
+            "name": "Pattern Contrast",
+            "value": 1.8
+          },
+          {
+            "name": "Roughness Base",
+            "value": 0.4
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color A (low)",
+            "value": [
+              0.25,
+              0.13,
+              0.06,
+              1.0
+            ]
+          },
+          {
+            "name": "Color B (high)",
+            "value": [
+              0.6,
+              0.38,
+              0.2,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Use Triplanar/World UV",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Proc_CrackedClay",
+      "asset_path": "/Game/Eval/Instances/MI_Proc_CrackedClay",
+      "parent_material": "M_Procedural_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Noise Scale",
+            "value": 8.0
+          },
+          {
+            "name": "Cell Blend",
+            "value": 1.0
+          },
+          {
+            "name": "Pattern Contrast",
+            "value": 4.0
+          },
+          {
+            "name": "Roughness Base",
+            "value": 0.85
+          },
+          {
+            "name": "Proc Normal Strength",
+            "value": 3.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color A (low)",
+            "value": [
+              0.1,
+              0.07,
+              0.05,
+              1.0
+            ]
+          },
+          {
+            "name": "Color B (high)",
+            "value": [
+              0.55,
+              0.4,
+              0.28,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Use Triplanar/World UV",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Proc_Marble",
+      "asset_path": "/Game/Eval/Instances/MI_Proc_Marble",
+      "parent_material": "M_Procedural_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Noise Scale",
+            "value": 3.0
+          },
+          {
+            "name": "Cell Blend",
+            "value": 0.0
+          },
+          {
+            "name": "Pattern Contrast",
+            "value": 2.5
+          },
+          {
+            "name": "Roughness Base",
+            "value": 0.15
+          },
+          {
+            "name": "Stripe Amount",
+            "value": 0.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color A (low)",
+            "value": [
+              0.85,
+              0.84,
+              0.82,
+              1.0
+            ]
+          },
+          {
+            "name": "Color B (high)",
+            "value": [
+              0.2,
+              0.22,
+              0.25,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Use Triplanar/World UV",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Proc_RockTriplanar",
+      "asset_path": "/Game/Eval/Instances/MI_Proc_RockTriplanar",
+      "parent_material": "M_Procedural_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "World Proj Scale",
+            "value": 0.08
+          },
+          {
+            "name": "Noise Scale",
+            "value": 24.0
+          },
+          {
+            "name": "Cell Blend",
+            "value": 0.5
+          },
+          {
+            "name": "Pattern Contrast",
+            "value": 3.0
+          },
+          {
+            "name": "Roughness Base",
+            "value": 0.9
+          },
+          {
+            "name": "Proc Normal Strength",
+            "value": 4.0
+          }
+        ],
+        "vector": [
+          {
+            "name": "Color A (low)",
+            "value": [
+              0.12,
+              0.12,
+              0.13,
+              1.0
+            ]
+          },
+          {
+            "name": "Color B (high)",
+            "value": [
+              0.5,
+              0.5,
+              0.52,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": [
+          {
+            "name": "Use Triplanar/World UV",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "MI_Sty_ClassicToon",
+      "asset_path": "/Game/Eval/Instances/MI_Sty_ClassicToon",
+      "parent_material": "M_Stylized_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Shade Bands",
+            "value": 2.0
+          },
+          {
+            "name": "Rim Power",
+            "value": 4.0
+          },
+          {
+            "name": "Outline Threshold",
+            "value": 0.75
+          }
+        ],
+        "vector": [
+          {
+            "name": "Lit Color",
+            "value": [
+              0.95,
+              0.7,
+              0.5,
+              1.0
+            ]
+          },
+          {
+            "name": "Shadow Color",
+            "value": [
+              0.4,
+              0.25,
+              0.35,
+              1.0
+            ]
+          },
+          {
+            "name": "Rim Color",
+            "value": [
+              1.0,
+              0.9,
+              0.6,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_Sty_InkOutline",
+      "asset_path": "/Game/Eval/Instances/MI_Sty_InkOutline",
+      "parent_material": "M_Stylized_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Shade Bands",
+            "value": 1.0
+          },
+          {
+            "name": "Outline Width",
+            "value": 0.4
+          },
+          {
+            "name": "Outline Threshold",
+            "value": 0.5
+          }
+        ],
+        "vector": [
+          {
+            "name": "Lit Color",
+            "value": [
+              0.98,
+              0.98,
+              0.96,
+              1.0
+            ]
+          },
+          {
+            "name": "Shadow Color",
+            "value": [
+              0.85,
+              0.85,
+              0.82,
+              1.0
+            ]
+          },
+          {
+            "name": "Outline Color",
+            "value": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_Sty_RimGlowHero",
+      "asset_path": "/Game/Eval/Instances/MI_Sty_RimGlowHero",
+      "parent_material": "M_Stylized_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Shade Bands",
+            "value": 3.0
+          },
+          {
+            "name": "Rim Power",
+            "value": 1.5
+          },
+          {
+            "name": "Rim Threshold",
+            "value": 0.3
+          }
+        ],
+        "vector": [
+          {
+            "name": "Lit Color",
+            "value": [
+              0.2,
+              0.2,
+              0.3,
+              1.0
+            ]
+          },
+          {
+            "name": "Shadow Color",
+            "value": [
+              0.05,
+              0.05,
+              0.1,
+              1.0
+            ]
+          },
+          {
+            "name": "Rim Color",
+            "value": [
+              2.0,
+              0.4,
+              3.0,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    },
+    {
+      "instance_id": "MI_Sty_SmoothCel",
+      "asset_path": "/Game/Eval/Instances/MI_Sty_SmoothCel",
+      "parent_material": "M_Stylized_Master",
+      "overrides": {
+        "scalar": [
+          {
+            "name": "Shade Bands",
+            "value": 6.0
+          },
+          {
+            "name": "Rim Power",
+            "value": 6.0
+          },
+          {
+            "name": "Outline Threshold",
+            "value": 0.8
+          }
+        ],
+        "vector": [
+          {
+            "name": "Lit Color",
+            "value": [
+              0.8,
+              0.85,
+              0.95,
+              1.0
+            ]
+          },
+          {
+            "name": "Shadow Color",
+            "value": [
+              0.3,
+              0.4,
+              0.6,
+              1.0
+            ]
+          },
+          {
+            "name": "Rim Color",
+            "value": [
+              0.5,
+              0.8,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "texture": [],
+        "static_switch": []
+      }
+    }
+  ]
+}
