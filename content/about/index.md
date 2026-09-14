@@ -4,8 +4,6 @@ date: 2026-09-14T17:58:00+08:00
 draft: false
 ---
 
-<img src="profile.png" alt="Yiran Chen" width="180" />
-
 Hi, I’m Yiran.
 
 I am currently a Ph.D. student in Computer Science and Technology at Fudan University. My research focuses on stylized rendering by integrating deep learning with engine rendering pipelines. I care about turning artistic ideas into practical, production-ready tools.
